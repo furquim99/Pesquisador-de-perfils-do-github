@@ -44,7 +44,9 @@ async function getUserData(userName) {
     user.setInfo(userResponse)
     user.setRepositories(repositoriesResponse)
     user.setEvents(eventsResponse)
-    // console.log(user, 'informaçoes requisitadas feitas por nos do github da pessoa pesquisda')
+    
+    console.log(user, 'informaçoes requisitadas feitas por nos do github da pessoa pesquisada')
+    console.log(eventsResponse, 'informaçoesmais precisas do gitHub do usuario')
     console.log(userResponse, 'informaçoes do gitHub') 
 
     screen.renderUser(user)

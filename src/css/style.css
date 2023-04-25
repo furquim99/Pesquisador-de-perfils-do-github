@@ -81,7 +81,7 @@ main {
 }
 
 .container header #btn-search:hover {
-  background-color: rgb(158, 109, 236);
+  background-color: rgb(67, 177, 76);
   color: #ffffff;
   border-color: #ffffff;
 }
@@ -107,7 +107,7 @@ main {
 .container .profile-data .info img{
   width: 50%;
   border-radius: 50%;
-  border: 10px solid rgb(183, 105, 255);
+  border: 10px solid rgb(58, 116, 5);
 }
 
 .container .profile-data .info h1{
@@ -121,8 +121,43 @@ main {
   font-weight: 400;
   line-height: 23px;
 }
+.container .profile-data .eventos{
+  background-color: lightgray;
+  padding: 30px;
+}
+.container .profile-data .eventos ul{
+  /* display: flex;
+  flex-wrap: wrap;
+  text-align: left; */
+  margin-top: 30px;
+}
 
-.container .profile-data .counters{
+.container .profile-data .eventos h2{
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.container .profile-data .eventos ul li {
+  /* width: 100%;  
+  margin: 5px 0; */
+  padding: 10px 0;
+}
+
+.container .profile-data .eventos ul li strong{
+  font-weight: 700;
+}
+
+.container .profile-data .eventos ul li h4,
+.container .profile-data .eventos ul li p{
+  margin-bottom: 10px;
+}
+
+
+.container .profile-data.hide{
+  display: none;
+}
+
+.container .profile-data .numbersF{
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -130,11 +165,11 @@ main {
   margin-top: 70px;  
 }
 
-.container .profile-data .counters h4{
+.container .profile-data .numbersF h4{
   margin-bottom: 30px;
 }
 
-.container .profile-data .counters span{
+.container .profile-data .numbersF span{
   color: white;
   padding: 15px;
   border-radius: 50%;
@@ -142,17 +177,16 @@ main {
   display: block;
 }
 
-.container .profile-data .counters .followers span{
-  background-color: purple;
+.container .profile-data .numbersF .seguidores span{
+  background-color: rgb(88, 236, 30);
 }
 
-.container .profile-data .counters .following span{
-  background-color: purple;
+.container .profile-data .numbersF .seguindo span{
+  background-color: rgb(11, 128, 0);
 }
 
-/* REPOSITORIES */
 
-.container .profile-data .repositories h2{
+.container .profile-data .repositories h4{
   margin-bottom: 30px;
   text-align: center;
 }
@@ -162,6 +196,11 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   text-align: left;
+}
+.container .profile-data .repositories div i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container .profile-data .repositories ul li a{
@@ -174,7 +213,7 @@ main {
 }
 
 .container .profile-data .repositories ul li a:hover{
-  background-color:rgb(183, 105, 255);
+  background-color:rgb(84, 136, 60);
   color: #fff
 }
 
@@ -182,44 +221,14 @@ main {
   font-weight: 700;
   margin-bottom: 10px;
   text-transform: uppercase;
+  
 }
 
 .container .profile-data .repositories ul li a i{
   display: inline-block;
   font-style: normal;
   padding: 5px;
-  background-color: slateblue;
+  background-color: rgb(15, 22, 10);
   color: white;
   border-radius: 5px;  
-}
-
-/* EVENTS */
-.container .profile-data .events ul{
-  display: flex;
-  flex-wrap: wrap;
-  text-align: left;
-}
-
-.container .profile-data .events h2{
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.container .profile-data .events ul li {
-  width: 100%;  
-  margin: 5px 0;
-}
-
-.container .profile-data .events ul li strong{
-  font-weight: 700;
-}
-
-.container .profile-data .events ul li h4,
-.container .profile-data .events ul li p{
-  margin-bottom: 10px;
-}
-
-
-.container .profile-data.hide{
-  display: none;
 }

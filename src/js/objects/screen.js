@@ -7,56 +7,65 @@ const screen = {
                                             <h1>${user.name ?? 'Não possui nome cadastrado 😥'}</h1>
                                             <p>${user.bio ?? 'Não possui bio cadastrada 😥'}</p>
                                         </div>
+                                        <div class="numbersF">
+                                            <div class="seguidores">
+                                                <h4> Seguidores</h4>
+                                                <span>${user.seguidores}</span>
+                                            </div>
+                                            <div class="seguindo">
+                                                <h4> Seguindo</h4>
+                                                <span>${user.seguindo}</span>
+                                            </div>
+                                        </div>
                                         
-                                    </div>`    
-                                    // <div class="counters">
-                                    //         <div class="followers">
-                                    //             <h4>👥 Seguidores</h4>
-                                    //             <span>${user.followers}</span>
-                                    //         </div>
-                                    //         <div class="following">
-                                    //             <h4>👥 Seguindo</h4>
-                                    //             <span>${user.following}</span>
-                                    //         </div>
-                                    //     </div>                   
-                                
+                                    </div>`                                                   
         if(user.repositories.length > 0){
             let repositoriesItens = ''
             user.repositories.forEach(repo => 
                 
                 repositoriesItens += `<li><a href="${repo.html_url}" target="_blank">
                     <h4>${repo.name}</h4>
-                    
+                        <div>
+                            <i class="forks">🍴 ${repo.forks_count}</i>
+                            <i class="stars">⭐ ${repo.stargazers_count}</i>
+                            <i class="watchers">👀 ${repo.watchers_count}</i>
+                            <i class="language">👩‍💻 ${repo.language ?? 'Sem linguagem'}</i>
+                        </div>
                 </a></li>`)  
-{/* <i class="forks">🍴 ${repo.forks_count}</i>
-                    <i class="stars">⭐ ${repo.stargazers_count}</i>
-                    <i class="watchers">👀 ${repo.watchers_count}</i>
-                    <i class="language">👩‍💻 ${repo.language ?? 'Sem linguagem'}</i> */}
             this.userProfile.innerHTML += `<div class="repositories section">
                                             <h2>Repositórios</h2>
-                                            <ul>${repositoriesItens}</ul>
+                                            <ul class="ir">${repositoriesItens}</ul>
                                            </div>` 
         }
-
-        // if(user.events.length > 0){            
-        //     let eventsItens = ''
-
-        //     user.events.forEach(event => {
-        //         if(event.payload){
-        //             if(event.payload.commits){
-        //                 const commits = event.payload.commits
-        //                 const commistsList = commits.map(commit => `<span>${commit.message}</span>`)
-
-        //                 eventsItens += `<li><strong>${event.repo.name}:</strong> ${commistsList}</li>`
-        //             }
-        //         }
-        //     })
-
-        //     this.userProfile.innerHTML += `<div class="events section">
-        //                                     <h2>Atividades</h2>
-        //                                     <ul>${eventsItens}</ul>
-        //                                    </div>` 
-        // }
+        let eventsListItens = ""
+        user.events.forEach(event =>{
+            let commitMessage = ''
+            if(event.payload.commits === undefined){
+                commitMessage = "event sem commits"
+            }else{
+                commitMessage = event.payload.commits[0].message
+            }
+            
+            //console.log(commitMessage, 'mensagem')
+            eventsListItens += `<li><strong>${event.repo.name}: </strong> - ${commitMessage}</li>`
+        })
+        if(user.events.length > 0){
+            if(user.events.type === "PushEvent" || "CreateEvent"){
+                this.userProfile.innerHTML += `
+                                            <div class="eventos section">
+                                                <h2>Eventos</h2>
+                                                <ul>${eventsListItens}</ul>
+                                            </div>
+            `
+            }
+            } else if(user.events.length === 0) {
+                this.userProfile.innerHTML += `
+                                            <div class="eventos section">
+                                                <h2>Eventos</h2>
+                                                <ul>Nao possui atualizações recentemente</ul>
+                                            </div>
+            `
+            }
     },
     renderNotFound(){
         this.userProfile.innerHTML = "<h3>Usuário não encontrado, digite o nome corretamente</h3>"
